@@ -1,0 +1,47 @@
+@import '../../styles/main';
+
+.container {
+  position: relative;
+  padding: 0;
+  min-width: 304px;
+}
+
+.loader {
+  @include loader($separatorColor);
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 24px;
+  height: 24px;
+}
+
+.input {
+  @include input-text;
+}
+
+.suggestionsContainer {
+  position: absolute;
+  z-index: 999;
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  max-height: 240px;
+  overflow-y: scroll;
+  background-color: $backgroundColor;
+  border: 1px solid $separatorColor;
+}
+
+.suggestion {
+  padding: 0 !important;
+  border-bottom: 1px solid $separatorColor;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.suggestionFocused {
+  background-color: $focusedColor;
+}

@@ -1,0 +1,80 @@
+@import '../../styles/main';
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 8px;
+  box-sizing: border-box;
+
+  &.selected {
+    background-color: $focusedColor;
+    border: 1px solid $separatorColor;
+    border-radius: 4px;
+    height: 64px;
+
+    & > input {
+      background-color: transparent;
+      width: 24px;
+      height: 24px;
+      padding: 8px;
+      margin: 8px;
+      border: 0;
+      border-radius: 50%;
+
+      &:focus, &:hover {
+        background-color: $separatorColor;
+        outline: none;
+      }
+    }
+  }
+
+  .cover {
+    position: relative;
+    background-color: transparent;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
+
+    .control {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      transform: scale(0);
+      transition: transform 100ms ease-in-out;
+      border-radius: 50%;
+      background-color: $backgroundColor;
+    }
+  }
+
+  &:hover .control, &.playing .control { transform: scale(1) }
+
+  .meta {
+    font-size: 12px;
+    line-height: 130%;
+    font-weight: 400;
+    overflow: hidden;
+
+    & > * {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .title {
+      font-weight: 700;
+    }
+  }
+}

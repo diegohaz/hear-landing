@@ -1,0 +1,36 @@
+@import 'normalize.css';
+@import '../../styles/main';
+
+html, body {
+  font-family: tondo, sans-serif;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: $foregroundColor;
+  width: 100vw;
+  min-height: 100vh;
+  background: $backgroundColor url('./city.jpg') no-repeat left bottom -12vw;
+  background-size: 100% auto;
+  box-sizing: border-box;
+  padding: 24px;
+
+  @media screen and (max-width: 480px) {
+    padding: 8px;
+  }
+
+  .attribution {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    color: rgba(white, .75);
+    background-color: rgba(black, .5);
+    line-height: 200%;
+    padding: 0 8px;
+
+    a { color: #fff }
+  }
+}

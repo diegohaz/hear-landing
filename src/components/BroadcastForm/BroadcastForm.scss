@@ -1,0 +1,49 @@
+@import '../../styles/main';
+
+.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+
+  & > * {
+    margin: 8px;
+  }
+
+  & > :first-child {
+    flex: 0 1 auto;
+    margin-left: 0;
+  }
+
+  input:not([type=image]) {
+    @include input-text;
+  }
+
+  .send-button {
+    @include button;
+    height: 64px;
+  }
+
+  .info {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 300;
+    color: $secondaryForegroundColor;
+    white-space: nowrap;
+    margin: 8px 0 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    & > * {
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 24px;
+    }
+  }
+}

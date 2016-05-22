@@ -1,0 +1,68 @@
+@function contrast ($baseColor, $darkenAmount, $lightenAmount: $darkenAmount) {
+  @if (lightness($baseColor) < 50%) {
+    @return lighten($baseColor, $lightenAmount);
+  } @else {
+    @return darken($baseColor, $darkenAmount)
+  }
+}
+
+$primaryColor: #d4145a;
+$secondaryColor: #2196f3;
+$backgroundColor: #fff;
+$foregroundColor: contrast($backgroundColor, 85%);
+$secondaryForegroundColor: contrast($backgroundColor, 60%);
+$focusedColor: contrast($backgroundColor, 10%);
+$separatorColor: contrast($backgroundColor, 25%);
+
+@mixin input-text {
+  width: 100%;
+  font-size: 20px;
+  height: 64px;
+  padding: 0 8px;
+  border: 1px solid $separatorColor;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: tondo, sans-serif;
+}
+
+@mixin button ($bgColor: $primaryColor) {
+  width: 100%;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: $bgColor;
+  color: if(lightness($bgColor) < 50%, white, black);
+  outline: none;
+  border: 0;
+  padding: 16px;
+  cursor: pointer;
+  font-family: tondo, sans-serif;
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  &[disabled] {
+    background-color: lighten($bgColor, 30%) !important;
+    cursor: auto;
+  }
+
+  &:hover {
+    background-color: if(lightness($bgColor) < 50%, lighten($bgColor, 5%), darken($bgColor, 5%));
+  }
+
+  &:active {
+    background-color: darken($bgColor, 10%);
+  }
+}
+
+@mixin loader ($color: $secondaryColor, $lineWidth: 2px) {
+  width: 25px;
+  height: 25px;
+  animation: loading infinite .75s linear;
+  border: $lineWidth solid $color;
+  border-top-color: transparent;
+  border-radius: 100%;
+}
+
+@keyframes loading {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
