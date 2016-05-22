@@ -38,10 +38,15 @@ gulp.task('webpack-dev-server', function(callback) {
 });
 
 // Build process
-gulp.task('build', ['build:scripts', 'build:html']);
+gulp.task('build', ['build:images', 'build:scripts', 'build:html']);
 
 gulp.task('build:clean', function() {
   return del('./dist');
+});
+
+gulp.task('build:images', ['build:clean'], function() {
+  return gulp.src('./src/images/**/*')
+    .pipe(gulp.dest('./dist/images'));
 });
 
 gulp.task('build:html', ['build:clean'], function() {
