@@ -1,6 +1,5 @@
 var express = require('express');
 var http = require('http');
-var compression = require('compression');
 
 var app = express();
 var server = http.createServer(app);
@@ -15,7 +14,6 @@ app.use(function(req, res, next) {
   }
 });
 
-app.use(compression());
 app.use(express.static('dist'));
 app.use(function(req, res) {
   res.sendFile(__dirname + '/dist/index.html');
